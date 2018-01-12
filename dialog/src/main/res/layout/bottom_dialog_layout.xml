@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dedede"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:divider="@drawable/horizontal_divider_line"
+        android:minHeight="60dp"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/dialog_cancel_button_bg"
+            android:gravity="center"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            tools:text="取消" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/dialog_cancel_button_bg"
+            android:gravity="center"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            tools:text="取消" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/dialog_cancel_button_bg"
+            android:gravity="center"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            tools:text="取消" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_menu_height"
+        android:layout_marginTop="10dp"
+        android:text="取消"
+        android:background="@drawable/dialog_menu_bg"
+        android:gravity="center"
+        android:textColor="#333333"
+        android:textSize="17sp" />
+
+</LinearLayout>

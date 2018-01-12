@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="HardcodedText"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_layout_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="50dp"
+            tools:text="TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/dialog_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="17dp"
+            android:paddingTop="10dp"
+            android:paddingRight="17dp"
+            android:paddingBottom="17dp"
+            android:minHeight="50dp"
+            android:background="#00009909"
+            android:textColor="#352424"
+            android:textSize="14sp"
+            android:visibility="visible"
+            tools:text="message message message message message message message" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:divider="@drawable/vertical_divider_line"
+            android:orientation="horizontal"
+            android:showDividers="middle">
+
+            <TextView
+                android:id="@+id/dialog_cancel_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_cancel_button_bg"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/button_text_color"
+                tools:text="取消" />
+
+            <TextView
+                android:id="@+id/dialog_confirm_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_confirm_button_bg"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/button_text_color"
+                tools:text="确定" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
