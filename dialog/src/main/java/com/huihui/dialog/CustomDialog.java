@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -52,6 +54,19 @@ public class CustomDialog {
             singleTextView.setVisibility(View.GONE);
 
             dialog = new Dialog(context, R.style.CustomDialogStyle);
+            Window window = dialog.getWindow();
+            if (window != null) {
+                //屏幕宽度
+                int screenWidth = mContext.getResources().getDisplayMetrics().widthPixels;
+                View decorView = window.getDecorView();
+                if (decorView != null) {
+                    int paddingLeft = (int) (screenWidth * 0.12f + 0.5f);
+                    decorView.setPadding(paddingLeft, 0,paddingLeft, 0);
+                }
+                WindowManager.LayoutParams params = window.getAttributes();
+                params.width = mContext.getResources().getDisplayMetrics().widthPixels;
+                window.setAttributes(params);
+            }
             dialog.setContentView(rootView);
         }
 
@@ -133,6 +148,10 @@ public class CustomDialog {
         private void showLayout() {
             titleTextView.setVisibility(showTitle ? View.VISIBLE : View.GONE);
             msgTextView.setVisibility(showMessage ? View.VISIBLE : View.GONE);
+            if (!showTitle && !showMessage) {
+                //title message同时都没设置时显示title用来占位
+                titleTextView.setVisibility(View.VISIBLE);
+            }
 
             if (showSingleButton) {
                 singleTextView.setVisibility(View.VISIBLE);
@@ -162,21 +181,28 @@ public class CustomDialog {
                 }
             }
 
-            if (!(showTitle && showMessage)) {
+            if (!(showTitle && showMessage) || (!showTitle && !showMessage)) {
                 DisplayMetrics density = mContext.getResources().getDisplayMetrics();
                 Log.d("Test", "updateLayout: " + density);
                 minHeight = (int) (1.0 / 4 * density.widthPixels);
             }
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, minHeight);
             if (showTitle && !showMessage) {
-                titleTextView.setLayoutParams(layoutParams);
-                titleTextView.setPadding(titleTextView.getPaddingLeft(), 0, titleTextView.getPaddingRight(), 0);
+                titleTextView.setMinHeight(minHeight);
+                int paddingLeft = titleTextView.getPaddingLeft();
+                int paddingTop = titleTextView.getPaddingTop();
+                titleTextView.setPadding(paddingLeft, paddingTop, paddingLeft, paddingTop);
             } else if (!showTitle && showMessage) {
-                msgTextView.setLayoutParams(layoutParams);
-                msgTextView.setPadding(msgTextView.getPaddingLeft(), 0, msgTextView.getPaddingRight(), 0);
+                msgTextView.setMinHeight(minHeight);
+                int paddingLeft = msgTextView.getPaddingLeft();
+                int paddingTop = msgTextView.getPaddingTop();
+                msgTextView.setPadding(paddingLeft, paddingTop, paddingLeft, paddingTop);
+            } else if (!showTitle && !showMessage) {
+                titleTextView.setMinHeight(minHeight);
+                int paddingLeft = titleTextView.getPaddingLeft();
+                int paddingTop = titleTextView.getPaddingTop();
+                titleTextView.setPadding(paddingLeft, paddingTop, paddingLeft, paddingTop);
             }
-
         }
 
         public void show() {

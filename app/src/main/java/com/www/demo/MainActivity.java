@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
-        builder.setMessage("我渐渐发现了一个悲凉的事实，那就是，站在个人成长的角度来看，太多的人被一份“好工作”给坑了")
+        builder
+                .setMessage("我渐渐发现了一个悲凉的事实，那就是，站在个人成长的角度来看，太多的人被一份'好工作'给坑了")
                 .setTitle("效用函数")
 //                .setSingleButton("OK", new View.OnClickListener() {
 //                    @Override
@@ -49,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        Toast.makeText(MainActivity.this, "单行", Toast.LENGTH_SHORT).show();
 //                    }
 //                })
-//                .setCancelButton("取消", true, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
+                .setCancelButton("取消", false, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .setConfirmButton("我知道了", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
