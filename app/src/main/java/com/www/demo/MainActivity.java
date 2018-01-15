@@ -21,19 +21,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.open).setOnClickListener(this);
 
-//        CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
-//        builder.setTitle("亲爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
-//                .setMessage("亲爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
-//                .setSingleButton("我知道了", null)
-//                .show();
-
-//        CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
-//        builder.setTitle("爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
-//                .setTitle(spanned)
-//                .setSingleButton("确定", null)
-//                .show();
-
-
     }
 
     @Override
@@ -54,19 +41,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
-        builder.setMessage("爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
-                .setSingleButton("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "单行", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setCancelButton("取消", true, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
-                    }
-                })
+        builder.setMessage("我渐渐发现了一个悲凉的事实，那就是，站在个人成长的角度来看，太多的人被一份“好工作”给坑了")
+                .setTitle("效用函数")
+//                .setSingleButton("OK", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MainActivity.this, "单行", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .setCancelButton("取消", true, new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
                 .setConfirmButton("我知道了", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
