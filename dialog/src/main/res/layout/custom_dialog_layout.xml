@@ -64,8 +64,9 @@
                 android:background="@drawable/dialog_cancel_button_bg"
                 android:gravity="center"
                 android:textSize="15sp"
+                android:visibility="visible"
                 android:textColor="@color/button_text_color"
-                tools:text="取消" />
+                tools:text="cancel" />
 
             <TextView
                 android:id="@+id/dialog_confirm_tv"
@@ -76,13 +77,25 @@
                 android:gravity="center"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                android:visibility="visible"
                 android:textColor="@color/button_text_color"
-                tools:text="确定" />
+                tools:text="ok" />
+
+            <TextView
+                android:id="@+id/dialog_single_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_single_button_bg"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textColor="@color/button_text_color"
+                tools:text="我知道了" />
+
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 </FrameLayout>

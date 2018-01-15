@@ -1,5 +1,6 @@
 package com.huihui.dialog;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -29,6 +30,7 @@ public class BottomMenuDialog {
         private Dialog dialog;
         private int menuHeight;
         private String title;
+        private List<CharSequence> menus;
         private LinearLayout.LayoutParams menuLayoutParam;
         private OnItemClickListener onItemClickListener;
 
@@ -66,42 +68,7 @@ public class BottomMenuDialog {
 
 
         public Builder setMenus(List<CharSequence> menus) {
-            if (null == menus || menus.size() == 0) {
-                return this;
-            }
-
-            menusLayout.removeAllViews();
-
-            if (!TextUtils.isEmpty(title)) {
-                TextView textView = new TextView(mContext);
-                textView.setText(title);
-                textView.setGravity(Gravity.CENTER);
-                textView.setTextColor(Color.GRAY);
-                textView.setTextSize(12);
-                menusLayout.addView(textView, menuLayoutParam);
-            }
-
-            for (final CharSequence menu : menus) {
-                final TextView textView = new TextView(mContext);
-                textView.setText(menu);
-                textView.setGravity(Gravity.CENTER);
-                textView.setTextColor(Color.BLACK);
-                textView.setTextSize(17);
-                textView.setBackgroundResource(R.drawable.dialog_menu_bg);
-                menusLayout.addView(textView, menuLayoutParam);
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (null != onItemClickListener) {
-                            onItemClickListener.click(textView, menu);
-                            if (dialog != null) {
-                                dialog.dismiss();
-                            }
-                        }
-                    }
-                });
-            }
-
+            this.menus = menus;
             return this;
         }
 
@@ -118,13 +85,54 @@ public class BottomMenuDialog {
         }
 
 
-        public void show() {
-            if (dialog != null) {
-                dialog.show();
+        private void showLayout() {
+            menusLayout.removeAllViews();
 
+            if (!TextUtils.isEmpty(title)) {
+                TextView textView = new TextView(mContext);
+                textView.setText(title);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextColor(Color.GRAY);
+                textView.setTextSize(12);
+                menusLayout.addView(textView, menuLayoutParam);
+            }
+
+            if (null == menus || menus.size() == 0) {
+                return;
+            }
+
+            for (final CharSequence menu : menus) {
+                final TextView textView = new TextView(mContext);
+                textView.setText(menu);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextColor(Color.BLACK);
+                textView.setTextSize(17);
+                textView.setBackgroundResource(R.drawable.dialog_menu_bg);
+                menusLayout.addView(textView, menuLayoutParam);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+
+                        if (onItemClickListener != null) {
+                            onItemClickListener.click(textView, menu);
+                        }
+                    }
+                });
             }
         }
 
+        public void show() {
+            if (dialog != null && mContext != null) {
+                if (mContext instanceof Activity && ((Activity) mContext).isFinishing()) {
+                    return;
+                }
+                showLayout();
+                dialog.show();
+            }
+        }
     }
 
 
