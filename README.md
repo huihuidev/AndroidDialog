@@ -1,6 +1,18 @@
 # AndroidDialog
 
-### CustomDialog用法
+
+### Gradle
+
+~~~
+dependencies {
+    ...
+    compile 'com.huihui.library.dialog:0.0.2'
+
+}
+~~~
+
+
+### Usage CustomDialog
 ```
    CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
         builder.setMessage("我渐渐发现了一个悲凉的事实，那就是，站在个人成长的角度来看，太多的人被一份“好工作”给坑了")
@@ -22,7 +34,7 @@
                 .show();
 ```
 
-### BottomMenuDialog用法
+### Usage BottomMenuDialog
 
 ```
        ArrayList<CharSequence> list = new ArrayList<>();
@@ -39,3 +51,13 @@
                 })
                 .show();
  ```
+ 
+ ### ChangeLog
+ 
+ * 0.0.2
+    - 修改dialog大小
+    
+ * 0.0.1
+    + 基础功能
+ 
+ 
