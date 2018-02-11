@@ -36,6 +36,9 @@ public class CustomDialog {
         private boolean showConfirmButton = false;
         private boolean showSingleButton = false;
         private int minHeight;
+        private float confirmButtonSize = 15f;
+        private float cancelButtonSize = 15f;
+
 
         public Builder(Context context) {
             this.mContext = context;
@@ -93,7 +96,7 @@ public class CustomDialog {
         }
 
         public Builder setConfirmButton(CharSequence confirmButton, View.OnClickListener listener) {
-            return setConfirmButton(confirmButton, true, listener);
+            return setConfirmButton(confirmButton, false, listener);
         }
 
         public Builder setConfirmButton(CharSequence confirmButton, boolean bold, View.OnClickListener listener) {
@@ -127,8 +130,21 @@ public class CustomDialog {
             return this;
         }
 
+        public Builder setTextSize(float confirmSize, float cancelSize) {
+            //limit min size
+            confirmButtonSize = confirmSize > 0 ? confirmSize : confirmButtonSize;
+            cancelButtonSize = cancelSize > 0 ? cancelSize : cancelButtonSize;
+            //limit max size
+            confirmButtonSize = confirmButtonSize > 20 ? 20 : confirmButtonSize;
+            cancelButtonSize = cancelButtonSize > 20 ? 20 : cancelButtonSize;
+            return this;
+        }
+
+
+
         private Builder setButton(TextView view, CharSequence text, final View.OnClickListener listener, boolean bold) {
             view.setText(text);
+
             view.setTypeface(Typeface.defaultFromStyle(bold ? Typeface.BOLD : Typeface.NORMAL));
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -145,7 +161,11 @@ public class CustomDialog {
         }
 
 
+
+
         private void showLayout() {
+            cancelTextView.setTextSize(cancelButtonSize);
+            confirmTextView.setTextSize(confirmButtonSize);
             titleTextView.setVisibility(showTitle ? View.VISIBLE : View.GONE);
             msgTextView.setVisibility(showMessage ? View.VISIBLE : View.GONE);
             if (!showTitle && !showMessage) {

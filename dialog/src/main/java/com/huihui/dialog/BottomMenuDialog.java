@@ -29,10 +29,12 @@ public class BottomMenuDialog {
         private Context mContext;
         private Dialog dialog;
         private int menuHeight;
-        private String title;
+        private int menuPadding;
+        private CharSequence title;
         private List<CharSequence> menus;
         private LinearLayout.LayoutParams menuLayoutParam;
         private OnItemClickListener onItemClickListener;
+        private boolean showCancelMenu = true;
 
 
         public Builder(Context context) {
@@ -63,7 +65,8 @@ public class BottomMenuDialog {
             }
 
             menuHeight = mContext.getResources().getDimensionPixelSize(R.dimen.bottom_menu_height);
-            menuLayoutParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, menuHeight);
+            menuPadding = mContext.getResources().getDimensionPixelSize(R.dimen.bottom_menu_padding);
+            menuLayoutParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
 
 
@@ -72,7 +75,7 @@ public class BottomMenuDialog {
             return this;
         }
 
-        public Builder setTitle(String title) {
+        public Builder setTitle(CharSequence title) {
             if (!TextUtils.isEmpty(title)) {
                 this.title = title;
             }
@@ -84,26 +87,41 @@ public class BottomMenuDialog {
             return this;
         }
 
+        public Builder showCancelMenu(boolean show) {
+            this.showCancelMenu = show;
+            return this;
+        }
+
 
         private void showLayout() {
             menusLayout.removeAllViews();
+            cancelTextView.setVisibility(showCancelMenu ? View.VISIBLE : View.GONE);
+            boolean emptyMenu = isEmptyMenu();
+
+            if (emptyMenu && TextUtils.isEmpty(title)) {
+                title = "暂无数据";
+            }
 
             if (!TextUtils.isEmpty(title)) {
                 TextView textView = new TextView(mContext);
                 textView.setText(title);
+                textView.setMinHeight(menuHeight);
+                textView.setPadding(0, menuPadding, 0, menuPadding);
                 textView.setGravity(Gravity.CENTER);
                 textView.setTextColor(Color.GRAY);
                 textView.setTextSize(12);
                 menusLayout.addView(textView, menuLayoutParam);
             }
 
-            if (null == menus || menus.size() == 0) {
+            if (emptyMenu) {
                 return;
             }
 
             for (final CharSequence menu : menus) {
                 final TextView textView = new TextView(mContext);
                 textView.setText(menu);
+                textView.setMinHeight(menuHeight);
+                textView.setPadding(0, menuPadding, 0, menuPadding);
                 textView.setGravity(Gravity.CENTER);
                 textView.setTextColor(Color.BLACK);
                 textView.setTextSize(17);
@@ -133,7 +151,16 @@ public class BottomMenuDialog {
                 dialog.show();
             }
         }
+
+
+        //菜单是否为空
+        private boolean isEmptyMenu() {
+            return menus == null || menus.size() == 0;
+        }
+
     }
+
+
 
 
     public interface OnItemClickListener {

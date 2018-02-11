@@ -13,6 +13,7 @@
         android:background="@color/white"
         android:divider="@drawable/horizontal_divider_line"
         android:minHeight="60dp"
+        android:gravity="center"
         android:orientation="vertical"
         android:showDividers="middle">
 
@@ -28,6 +29,7 @@
         android:background="@drawable/dialog_menu_bg"
         android:gravity="center"
         android:text="@string/text_cancel"
+        android:visibility="visible"
         android:textColor="#333333"
         android:textSize="17sp" />
 

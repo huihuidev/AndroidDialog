@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:ignore="HardcodedText"
-    android:background="@android:color/transparent">
+    android:background="@android:color/transparent"
+    tools:ignore="HardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,30 +18,30 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="50dp"
-            tools:text="TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingTop="15dp"
             android:textColor="#000000"
+            android:textSize="17sp"
             android:textStyle="bold"
-            android:visibility="gone"
-            android:textSize="17sp" />
+            android:visibility="visible"
+            tools:text="@string/tools_title" />
 
         <TextView
             android:id="@+id/dialog_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="17dp"
-            android:paddingTop="10dp"
-            android:paddingRight="17dp"
-            android:paddingBottom="17dp"
-            android:minHeight="50dp"
             android:background="#00009909"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:paddingBottom="17dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:paddingTop="10dp"
             android:textColor="#352424"
             android:textSize="14sp"
             android:visibility="visible"
-            tools:text="message message message message message message message" />
+            tools:text="@string/tools_message" />
 
         <View
             android:layout_width="match_parent"
@@ -50,9 +50,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:minHeight="45dp"
             android:divider="@drawable/vertical_divider_line"
+            android:gravity="center"
             android:orientation="horizontal"
             android:showDividers="middle">
 
@@ -63,10 +64,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/dialog_cancel_button_bg"
                 android:gravity="center"
+                android:textColor="@color/button_text_color"
                 android:textSize="15sp"
                 android:visibility="visible"
-                android:textColor="@color/button_text_color"
-                tools:text="cancel" />
+                tools:text="@string/tools_cancel" />
 
             <TextView
                 android:id="@+id/dialog_confirm_tv"
@@ -75,11 +76,11 @@
                 android:layout_weight="1"
                 android:background="@drawable/dialog_confirm_button_bg"
                 android:gravity="center"
+                android:textColor="@color/button_text_color"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:visibility="visible"
-                android:textColor="@color/button_text_color"
-                tools:text="ok" />
+                tools:text="@string/tools_ok" />
 
             <TextView
                 android:id="@+id/dialog_single_tv"
@@ -88,11 +89,11 @@
                 android:layout_weight="1"
                 android:background="@drawable/dialog_single_button_bg"
                 android:gravity="center"
+                android:textColor="@color/button_text_color"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:visibility="gone"
-                android:textColor="@color/button_text_color"
-                tools:text="我知道了" />
+                tools:text="@string/tools_i_know" />
 
         </LinearLayout>
 

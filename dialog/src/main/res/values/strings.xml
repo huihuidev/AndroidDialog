@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CustomDialog</string>
     <string name="text_cancel">取消</string>
+    <string name="tools_title">TitleTitleTitleTitleTitle</string>
+    <string name="tools_message">Message Message Message Message Message Message Message</string>
+    <string name="tools_i_know">我知道了</string>
+    <string name="tools_cancel">cancel</string>
+    <string name="tools_ok">ok</string>
 </resources>
